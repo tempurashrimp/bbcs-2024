@@ -13,7 +13,7 @@ st.header('Is it over for me?')
 st.image('https://pbs.twimg.com/media/FkFoeLhWIAAPYuQ?format=jpg&name=large')
 
 st.markdown('*STUDENT DIET AND GPA*')
-prompt = st.text_input(label='type student index here', value='20')
+prompt = st.text_input(label='type student index here', value='0')
 
 df = pd.read_csv('food_coded.csv')
 
@@ -23,10 +23,7 @@ try:
 except Exception:
     st.write('Student with specified index does not exist')
 
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-def regen():
-    chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
+chart_data = df['calories_chicken']
 
 st.area_chart(chart_data)
-st.button('Regenerate', on_click=regen, key=None)
 
